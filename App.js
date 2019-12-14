@@ -1,21 +1,30 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import FindMe from './components/FindMe';
 
 export default function App() {
   const [people, setPeople] = useState([
-    {name: 'shaun', key: '1'},
-    {name: 'yoshi', key: '2'},
-    {name: 'mario', key: '3'},
-    {name: 'joko', key: '4'},
-    {name: 'kusino', key: '5'},
-    {name: 'tampa', key: '6'},
-    {name: 'mungkidi', key: '7'},
+    {name: 'shaun', id: '1'},
+    {name: 'yoshi', id: '2'},
+    {name: 'mario', id: '3'},
+    {name: 'joko', id: '4'},
+    {name: 'kusino', id: '5'},
+    {name: 'tampa', id: '6'},
+    {name: 'mungkidi', id: '7'},
   ])
 
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <FlatList 
+        numColumns={2}
+        keyExtractor={(item) => item.id }
+        data={people}
+        renderItem={({item}) => (
+          <Text style={styles.item}>{item.name}</Text>
+        )}
+      />
+
+      {/* <ScrollView>
         {
           people.map((item) => {
             return(
@@ -25,7 +34,7 @@ export default function App() {
             )
           })
         }
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
@@ -40,9 +49,11 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   item: {
-    marginTop: 24,
     padding: 30,
-    backgroundColor: 'pink',
+    backgroundColor: 'gray',
     fontSize: 24,
+    color:'white',
+    marginHorizontal: 10,
+    marginTop: 24,
   }
 });
