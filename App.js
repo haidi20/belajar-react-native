@@ -1,22 +1,31 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
+import FindMe from './components/FindMe';
 
 export default function App() {
-  const [name, setName] = useState('nata');
-  const [person, setPerson] = useState({name: 'andi', age: 20})
-
-  const clickHandler = () => {
-    setName('haidi');
-    setPerson({name: 'risky', age: '23'})
-  }
+  const [people, setPeople] = useState([
+    {name: 'shaun', key: '1'},
+    {name: 'yoshi', key: '2'},
+    {name: 'mario', key: '3'},
+    {name: 'joko', key: '4'},
+    {name: 'kusino', key: '5'},
+    {name: 'tampa', key: '6'},
+    {name: 'mungkidi', key: '7'},
+  ])
 
   return (
     <View style={styles.container}>
-      <Text>My Name is {name}</Text>
-      <Text>His Name is {person.name} and his age is {person.age} </Text>
-      <View style={styles.buttonContainer}>
-        <Button title="update state" onPress={clickHandler} />
-      </View>
+      <ScrollView>
+        {
+          people.map((item) => {
+            return(
+              <View key={item.key}>
+                <Text style={styles.item}>{item.name}</Text>
+              </View>
+            )
+          })
+        }
+      </ScrollView>
     </View>
   );
 }
@@ -25,10 +34,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40,
+    paddingHorizontal: 20,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
-  buttonContainer: {
-    marginTop: 20
+  item: {
+    marginTop: 24,
+    padding: 30,
+    backgroundColor: 'pink',
+    fontSize: 24,
   }
 });
