@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
 import FindMe from './components/FindMe';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
@@ -13,19 +13,24 @@ export default function App() {
   ])
 
   const pressHandler = (key) => {
-    sestTodos((prevTodos) => {
+    setTodos((prevTodos) => {
       return prevTodos.filter(todo => todo.key != key);
     });
   }
 
   const submitHandler = (text) => {
-    setTodos((prevTodos) => {
+    if(text.length > 3){
+      setTodos((prevTodos) => {
         return [
             {text: text, key: Math.random().toString()},
             ...prevTodos
         ]
-    })
-
+      })
+    }else{
+      Alert.alert('OOPS!', 'maaf, kata di masukkan kurang', [
+        {text: 'mengerti', onPress: () => console.log('alert tutup') }
+      ])
+    }
   }
 
 
