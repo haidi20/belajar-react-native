@@ -4,6 +4,7 @@ import FindMe from './components/FindMe';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import AddTodo from './components/addTodo';
+import Sanbox from './components/sanbox';
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -35,6 +36,7 @@ export default function App() {
 
 
   return (
+    // <Sanbox />
     <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
