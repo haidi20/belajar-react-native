@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Text} from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import Navigator from './routes/homeStack';
 
 import Home from './screens/home';
 
@@ -15,7 +16,8 @@ export default function App() {
   
   if(fontLoaded){
       return(
-        <Home />
+        <Navigator />
+        // <Text>home</Text>
       )
   }else{
     return(
