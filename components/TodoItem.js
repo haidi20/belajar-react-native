@@ -21,7 +21,6 @@ export default function TodoItem({item, pressHandler}) {
                     {item.text}
                 </Text>
             </View>
-            
         </TouchableOpacity>
     )
 }
